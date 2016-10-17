@@ -7,139 +7,184 @@
 //
 
 #import "ViewController.h"
-#import <CoreBluetooth/CoreBluetooth.h>
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
-
-#import <AVFoundation/AVFoundation.h>
-
+#import "AirView.h"
+#import "DataRequest.h"
+#import "BlueToothData.h"
+#import "BTDataModel.h"
+#import "DataSaveHelper.h"
+#import "DataRequest.h"
+#import "HistoryDataViewController.h"
+#import "CAButton.h"
+#import "ShareOnce.h"
+//#import <SAMKeychain.h>
 
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-
 #define SCREEN_WIDTH    self.view.bounds.size.width
 #define SCREEN_HEIGHT   self.view.bounds.size.height
 
-#define GROUP_ID                @"group.com.hanwang.MyCoreBluetoothDemo"
+#define GROUP_ID        @"group.com.hanwang.MyCoreBluetoothDemo"
 
-#define ST_DEVICE               @"Hanvon"
-#define MY_DEVICE               @"BlueNRG"
+#define MY_DEVICE       @"Hanvon"
+#define SERVICE_ID      @"FF12"
+#define PM25_CHAR       @"FF02"
 
-#define ACCELERATION_SERVICE    "1BC5D5A5-0200-B49A-E111-3ACF806E3602"
-#define FREEFALL_CHAR           "1BC5D5A5-0200-FC8F-E111-4ACFA0783EE2"
-#define ACCELERATION_CHAR       "1BC5D5A5-0200-36AC-E111-4BCF801B0A34"
-#define ENVIRONMENTAL_SERVICE   "1BC5D5A5-0200-D082-E211-77E4401A8242"
-#define PM25_CHAR               "1BC5D5A5-0200-0B84-E211-8BE480C420CD"
-
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,CBCentralManagerDelegate,CBPeripheralDelegate>
+@interface ViewController ()<CBCentralManagerDelegate,CBPeripheralDelegate>
 {
     CBCharacteristic *pm25Char;
     
-    BOOL acceleration_found;
-    BOOL freefall_acceleration;
-    
-    NSTimer *_timer;//定时器  刷新数据
+    float testPmvalue;
 }
-@property (nonatomic, strong) NSMutableArray *peripherals;//外围设备
-@property (nonatomic, strong) CBCentralManager *centreManager;//中心管理者
-@property (nonatomic, strong) UITableView *tableview;//展示数据
-@property (nonatomic, strong) CBPeripheral *peripheral;//外设
+@property (nonatomic, strong) CAButton *historyBtn;//进入历史界面按钮
 
-@property (nonatomic, strong) UILabel *pm25Label;
+//pm2.5显示的主视图
+@property (nonatomic, strong) AirView *airview;
 
 //通知的json
 @property (nonatomic, strong) NSMutableDictionary *notifyDic;
+
 @end
 
 @implementation ViewController
-//懒加载重写getter方法
-- (NSMutableArray *)peripherals {
-    if (!_peripherals) {
-        _peripherals = [NSMutableArray arrayWithCapacity:0];
-    }
-    return _peripherals;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"未连接设备";
-    self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view, typically from a nib.
-    _peripherals = [NSMutableArray arrayWithCapacity:0];
-    
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:@"查找设备" style:UIBarButtonItemStylePlain target:self action:@selector(leftBtnItemClicked)];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"开始刷新" style:UIBarButtonItemStylePlain target:self action:@selector(rightBtnItemClicked)];
-    [self.navigationItem.rightBarButtonItem setEnabled:NO];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    
-    _tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    _tableview.tableFooterView = [[UIView alloc] init];
-    _tableview.delegate = self;
-    _tableview.dataSource = self;
-//    [self.view addSubview:_tableview];
-
+    self.view.backgroundColor = [UIColor blackColor];
     //蓝牙检测到的PM2.5数据
-    _pm25Label = [self getLabelWith:100 :@"" :[UIColor darkGrayColor] :CGRectMake(0, SCREEN_HEIGHT/2-60, SCREEN_WIDTH, 120) :0];
-    [self.view addSubview:_pm25Label];
-    
     _notifyDic = [NSMutableDictionary dictionary];
-
-    //开始连接BlueNRG 设备
-    [self leftBtnItemClicked];
     
+    //实时界面
+    _airview = [[AirView alloc] initWithFrame:self.view.bounds];
+    _airview.backgroundColor = RGBA(2, 123, 216, 1);
+    [self.view addSubview:_airview];
+   
+    //同步历史数据按钮
+    _historyBtn = [CAButton buttonWithType:UIButtonTypeCustom];
+    _historyBtn.frame = CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60, 200, 40);
+    [_historyBtn setTitle:@"同步历史数据" forState:UIControlStateNormal];
+    _historyBtn.layer.cornerRadius = 20;
+    _historyBtn.layer.masksToBounds = YES;
+    [_historyBtn addTarget:self action:@selector(synHistoryData:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_historyBtn];
+    
+    testPmvalue = 14.7;
+    //测试通道
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(testData) userInfo:nil repeats:YES];
+//    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    
+//    [SAMKeychain deletePasswordForService:@"time" account:@"strainer"];
 }
 
-//返回一个label
-- (UILabel *)getLabelWith:(NSInteger)fontSize :(NSString *)title :(UIColor*)titleColor :(CGRect)lableRect :(NSInteger)lines{
-    UILabel *lable = [[UILabel alloc] initWithFrame:lableRect];
-    lable.font = [UIFont fontWithName:@"HDZK-GLXLZT-05" size:fontSize];
-    lable.text = title;
-    lable.textColor = titleColor;
-    lable.numberOfLines = lines;
-    lable.textAlignment = NSTextAlignmentCenter;
-    lable.backgroundColor = [UIColor clearColor];
-    return lable;
-}
-
-#pragma mark - 从特征中读取数据
-- (void)rightBtnItemClicked {
-    //读取数据 如果当前外设非空 则开始刷新读取设备的数据
-    if (_peripheral!=nil) {
-        if ([self.navigationItem.rightBarButtonItem.title isEqualToString:@"开始刷新"]) {
-            if (_timer!=nil) {
-                [_timer invalidate];
-                _timer = nil;
-            }
-            _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(scanEnvironment) userInfo:nil repeats:YES];
-            [_timer fire];
-            [self.navigationItem.rightBarButtonItem setTitle:@"停止刷新"];
-        }else {
-            [_timer invalidate];
-            _timer = nil;
-            [self.navigationItem.rightBarButtonItem setTitle:@"开始刷新"];
-        }
+//同步历史数据
+- (void)synHistoryData:(CAButton *)btn {
+    if ([btn.titleLabel.text isEqualToString:@"同步历史数据"]) {
+        //开始同步历史数据
+        [btn btnStartAnimtion];
+        [self performSelector:@selector(finishedSync) withObject:nil afterDelay:2.0];
+        
     }else {
-        [SVProgressHUD showErrorWithStatus:@"无设备连接"];
-        [self.navigationItem.leftBarButtonItem setTitle:@"查找设备"];
+        //进入历史记录界面
+        [SVProgressHUD dismiss];
+        NSArray *dataArray = [[DataSaveHelper sharedDataSaveHelper] getAllDatas];
+        if (dataArray!=nil) {
+            [ShareOnce getShareOnce].dataArray = dataArray;
+            HistoryDataViewController *vc = [[HistoryDataViewController alloc] init];
+            [self presentViewController:vc animated:YES completion:nil];
+        }else {
+            [SVProgressHUD showInfoWithStatus:@"无历史记录"];
+        }
     }
-}
-
-#pragma mark - tableview delegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _peripherals.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"cellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (cell==nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    CBPeripheral *peripheral = _peripherals[indexPath.row];
-    cell.textLabel.text = peripheral.name;
     
-    return cell;
+}
+
+- (void)finishedSync {
+    [_historyBtn finishedTask];
+}
+
+- (void)testData {
+    testPmvalue += (arc4random()%10/10.0);
+    
+    BlueToothData *data = [[BlueToothData alloc] init];
+    data.pm25Value = testPmvalue;
+    data.dataType = @"pm2.5";
+    data.timeStamp = [[NSDate date] timeIntervalSince1970];;
+    [[DataSaveHelper sharedDataSaveHelper] addData:data];
+    
+    [_airview reloadDataWithValue:data];
+    
+}
+
+//屏幕发生旋转会调用
+- (void)viewDidLayoutSubviews {
+    _airview.frame = self.view.bounds;
+    if (SCREEN_WIDTH>SCREEN_HEIGHT) {
+        _historyBtn.hidden = YES;
+    }else {
+        _historyBtn.hidden = NO;
+    }
+}
+
+
+#pragma mark - 屏幕发生旋转
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    //重新绘制airview里的内容
+    if (_airview.ballView!=nil) {
+        [_airview.ballView removeFromSuperview];
+        _airview.ballView = nil;
+    }
+    _historyBtn.frame = CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT-60, 200, 40);
+
+    if (SCREEN_WIDTH>SCREEN_HEIGHT) {
+        //横屏
+        _airview.ballView = [[BallView alloc] initWithFrame:CGRectMake(_airview.bounds.size.width/2-(_airview.bounds.size.height/2-30)-8, _airview.bounds.size.height/2-8, _airview.bounds.size.height-44, 16)];
+        [_airview addSubview:_airview.ballView];
+    }else {
+        _airview.ballView = [[BallView alloc] initWithFrame:CGRectMake(22, _airview.bounds.size.height/2-8, _airview.bounds.size.width-44, 16)];
+        [_airview addSubview:_airview.ballView];
+        
+    }
+    [_airview setNeedsDisplay];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (_centreManager!=nil) {
+        if (_centreManager.isScanning) {
+            [SVProgressHUD showWithStatus:@"搜索设备中"];
+        }
+    }
+   
+    CGFloat window_width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat window_height = [UIScreen mainScreen].bounds.size.height;
+    
+    _airview.frame = CGRectMake(0, 0, window_width, window_height);
+    //重新绘制airview里的内容
+    if (_airview.ballView!=nil) {
+        [_airview.ballView removeFromSuperview];
+        _airview.ballView = nil;
+    }
+    _historyBtn.frame = CGRectMake(window_width/2-100, window_height-60, 200, 40);
+    
+    if (window_width>window_height) {
+        //横屏
+        _historyBtn.hidden = YES;
+        _airview.ballView = [[BallView alloc] initWithFrame:CGRectMake(_airview.bounds.size.width/2-(_airview.bounds.size.height/2-30)-8, _airview.bounds.size.height/2-8, _airview.bounds.size.height-44, 16)];
+        [_airview addSubview:_airview.ballView];
+    }else {
+        _historyBtn.hidden = NO;
+        _airview.ballView = [[BallView alloc] initWithFrame:CGRectMake(22, _airview.bounds.size.height/2-8, _airview.bounds.size.width-44, 16)];
+        [_airview addSubview:_airview.ballView];
+        
+    }
+    [_airview setNeedsDisplay];
+    
 }
 
 #pragma mark - 连接BlueNRG设备
@@ -149,52 +194,48 @@
     peripheral.delegate = self;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _peripheral = _peripherals[indexPath.row];
-    [SVProgressHUD showWithStatus:@"连接中"];
-    //tableview 点击某个外设 并连接
-    [_centreManager connectPeripheral:_peripheral options:nil];
-    _peripheral.delegate = self;
-    
-    [_tableview deselectRowAtIndexPath:indexPath animated:YES];
-}
-
 #pragma mark -cbcentralmanager delegate
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI {
     //保存扫描到的外围设备
     //判断当前数组中不包含扫描到的此设备才保存
     NSLog(@"查找设备");
-    if (![_peripherals containsObject:peripheral]) {
-        if (peripheral.name!=NULL) {
-            [_peripherals addObject:peripheral];
-            NSString *peripheralName = [[NSString alloc] initWithString:peripheral.name];
-            if ([peripheralName containsString:ST_DEVICE]||[peripheralName containsString:MY_DEVICE]) {
-                [SVProgressHUD showSuccessWithStatus:@"已发现BlueNRG设备"];
-                _peripheral = peripheral;
-                [SVProgressHUD showWithStatus:@"发现设备，连接中"];
-                [self connectBlueNRGDeviceWithPeripheral:peripheral];
-            }
+    if (peripheral.name!=NULL) {
+        NSString *peripheralName = [[NSString alloc] initWithString:peripheral.name];
+        if ([peripheralName containsString:MY_DEVICE]) {
+            //找到了我们需要的外设
+            _peripheral = peripheral;
+            [SVProgressHUD showWithStatus:@"发现设备，连接中"];
+            [self connectBlueNRGDeviceWithPeripheral:peripheral];
         }
     }
     
-    [_tableview reloadData];
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-    NSLog(@"did Update state");
+//    NSLog(@"did Update state");
     //检测代理方法
-    if (central.state == UIGestureRecognizerStateFailed) {
+    if (central.state == CBCentralManagerStatePoweredOn) {
         [_centreManager scanForPeripheralsWithServices:nil options:nil];
-        NSLog(@"手机蓝牙处于可用状态");
+//        NSLog(@"手机蓝牙处于可用状态");
+        [SVProgressHUD showWithStatus:@"搜索设备中"];
+        [_centreManager scanForPeripheralsWithServices:nil options:nil];
     }
-    NSLog(@"state:%ld central:%@",central.state,central);
+    if (central.state==CBCentralManagerStatePoweredOff) {
+        [SVProgressHUD showInfoWithStatus:@"请打开手机蓝牙"];
+        [self disconnectBleDevice];
+    }
+    if (central.state==CBCentralManagerStateUnsupported) {
+        [SVProgressHUD showInfoWithStatus:@"设备不受支持"];
+        [self disconnectBleDevice];
+    }
+//    NSLog(@"state:%ld central:%@",central.state,central);
 }
 
 //连接外部设备成功调用
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-    [SVProgressHUD dismiss];
-    self.navigationItem.title = [NSString stringWithFormat:@"已连接【%@】",_peripheral.name];
-    [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    [SVProgressHUD showSuccessWithStatus:@"已连接上设备"];
+    //连接上了设备
+    
     //停止扫描
     [central stopScan];
 
@@ -206,8 +247,13 @@
 //连接外设失败调用
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"连接失败");
+    [SVProgressHUD showInfoWithStatus:@"连接断开,请靠近蓝牙设备"];
     //自动重连
-    [_centreManager connectPeripheral:_peripheral options:nil];
+
+    [self performSelector:@selector(connectMyBleDevice) withObject:nil afterDelay:1.5];
+//    if (_peripheral!=nil) {
+//        [_centreManager connectPeripheral:_peripheral options:nil];
+//    }
 }
 
 #pragma mark - CBPeripheral delegate
@@ -220,9 +266,7 @@
             //扫描特征
     for (int i=0; i<peripheral.services.count; i++) {
         CBService *service = [peripheral.services objectAtIndex:i];
-        if ([[self representativeString:service.UUID] isEqualToString:[NSString stringWithUTF8String:ACCELERATION_SERVICE]]) {
-            [peripheral discoverCharacteristics:nil forService:service];
-        } else if ([[self representativeString:service.UUID] isEqualToString:[NSString stringWithUTF8String:ENVIRONMENTAL_SERVICE]]) {
+        if ([service.UUID.UUIDString isEqualToString:SERVICE_ID]) {
             [peripheral discoverCharacteristics:nil forService:service];
         }
     }
@@ -234,37 +278,23 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     NSLog(@"扫描特征");
     //拿到服务中的所有的特征
-    if ([[self representativeString:service.UUID] isEqualToString:[NSString stringWithUTF8String:ACCELERATION_SERVICE]]) {
+    if([service.UUID.UUIDString isEqualToString:SERVICE_ID]) {
         for (int i=0; i<service.characteristics.count; i++) {
             CBCharacteristic *characteristic = [service.characteristics objectAtIndex:i];
-            if ([[self representativeString:characteristic.UUID] isEqualToString:[NSString stringWithUTF8String:ACCELERATION_CHAR]] ||
-                [[self representativeString:characteristic.UUID] isEqualToString:[NSString stringWithUTF8String:FREEFALL_CHAR]]) {
-                if ([[self representativeString:characteristic.UUID] isEqualToString:[NSString stringWithUTF8String:ACCELERATION_CHAR]]) {
-                    acceleration_found = YES;
-                } else if ([[self representativeString:characteristic.UUID] isEqualToString:[NSString stringWithUTF8String:FREEFALL_CHAR]]) {
-                    freefall_acceleration = YES;
-                }
-                [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+            if ([characteristic.UUID.UUIDString isEqualToString:PM25_CHAR]) {
+                pm25Char = characteristic;
             }
         }
-    } else if ([[self representativeString:service.UUID] isEqualToString:[NSString stringWithUTF8String:ENVIRONMENTAL_SERVICE]]) {
-        for (int i=0; i<service.characteristics.count; i++) {
-            CBCharacteristic *characteristic = [service.characteristics objectAtIndex:i];
-            if ([[self representativeString:characteristic.UUID] isEqualToString:[NSString stringWithUTF8String:PM25_CHAR]]) {
-               
-                if ([[self representativeString:characteristic.UUID] isEqualToString:[NSString stringWithUTF8String:PM25_CHAR]]) {
-                    pm25Char = characteristic;
-                }
-            }
-        }
-        [self rightBtnItemClicked];
+        [self scanEnvironment];
     }
 }
 
 //读取外设中的数据
 -(void)scanEnvironment {
     if (pm25Char!=nil) {
-        [self.peripheral readValueForCharacteristic:pm25Char];
+//        [self.peripheral readValueForCharacteristic:pm25Char];
+        
+        [self.peripheral setNotifyValue:YES forCharacteristic:pm25Char];
     }
 }
 
@@ -282,69 +312,30 @@
     
 }
 
-
-#pragma mark - 解析数据---------------------
-- (NSString *)representativeString:(CBUUID*)uuid
-{
-    NSData *data = [uuid data];
-    
-    NSUInteger bytesToConvert = [data length];
-    
-    const unsigned char *uuidBytes = [data bytes];
-    NSMutableString *outputString = [NSMutableString stringWithCapacity:16];
-    
-    for (NSInteger currentByteIndex = bytesToConvert-1; currentByteIndex >= 0; currentByteIndex--)
-    {
-        switch (currentByteIndex)
-        {
-            case 12:
-            case 10:
-            case 8:
-            case 6:[outputString appendFormat:@"%02x-", uuidBytes[currentByteIndex]]; break;
-            default:[outputString appendFormat:@"%02x", uuidBytes[currentByteIndex]];
-        }
-        
-    }
-    
-    return [outputString uppercaseString];
-}
-
-//大端转小端
--(NSInteger)littleEndianCharToIntWithFirst:(unsigned char)char1 andSecond:(unsigned char)char2 {
-    long tmp;
-    NSInteger result;
-    
-    tmp = (long)char2 << 8 | char1;
-    if (tmp < 32768)
-        result = tmp;
-    else
-        result = tmp - 65536;
-    return result;
-}
-
--(NSInteger)littleEndianCharToInt24WithFirst:(unsigned char)char1 second:(unsigned char)char2 andThird:(unsigned char)char3 {
-    long tmp;
-    //int result;
-    
-    tmp = (long)char3 << 16 | char2 << 8 | char1;
-    return tmp;
-}
-////////////////////////////////////////
-
-
 #pragma mark - 读取蓝牙特征中的数据
 - (void)peripheral:(CBPeripheral *)mperipheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     if (characteristic==pm25Char) {
         //NSUInteger bytesToConvert = [characteristic.value length];
-        const unsigned char *uuidBytes = [characteristic.value bytes];
+        //把接受的数据转化为字节的形式 数据格式为整形
+        const unsigned int *uuidBytes = [characteristic.value bytes];
+        //去整形的第三位即是pm2.5的值
+        unsigned int char3 = uuidBytes[2];
+        //数值除以100得到最终的需要的值
+        float pm25Value = char3/100.0;
         
-        NSInteger pm25 = [self littleEndianCharToInt24WithFirst:uuidBytes[0] second:uuidBytes[1] andThird:uuidBytes[2]];
-        NSString *textString = [NSString stringWithFormat:@"%.2fug/m³",pm25/100.0];
-        NSInteger unitStringLength = [@"ug/m³" length];
-        _pm25Label.attributedText = [self getVariousString:textString unitLength:unitStringLength];
-
-        [_notifyDic setObject:@(pm25/100.0) forKey:@"PM25"];
-
+        //        NSInteger pm25 = [self littleEndianCharToInt24WithFirst:uuidBytes[0] second:uuidBytes[1] andThird:uuidBytes[2]];
+        
+        BlueToothData *data = [[BlueToothData alloc] init];
+        data.pm25Value = pm25Value;
+        data.dataType = @"pm2.5";
+        data.timeStamp = [[NSDate date] timeIntervalSince1970];
+        [[DataSaveHelper sharedDataSaveHelper] addData:data];
+        
+        //刷新数据
+        [_airview reloadDataWithValue:data];
+        
+        
+        [_notifyDic setObject:@(pm25Value) forKey:@"PM25"];
     }
     
     NSUserDefaults *shared = [[NSUserDefaults standardUserDefaults] initWithSuiteName:GROUP_ID];
@@ -352,56 +343,59 @@
     [shared synchronize];
 }
 
-//一个字符串中不同的字体样式
-- (NSMutableAttributedString *)getVariousString:(NSString *)textString unitLength:(NSInteger)length{
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:textString];
-    [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HDZK-GLXLZT-05" size:100] range:NSMakeRange(0,textString.length-length)];
-    [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HDZK-GLXLZT-05" size:20] range:NSMakeRange(textString.length-length,length)];
-    return str;
-}
+
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 }
 
+#pragma mark - 搜索外设
+- (void)searchBleDevice {
+    //先停止之前的
+    if (_peripheral!=nil) {
+        [self disconnectBleDevice];
+    }
+    
+    //设置中心设备 利用中心设备扫描外部设备
+    _centreManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:@{CBCentralManagerOptionShowPowerAlertKey:@(NO)}];
+    
+    //如果指定数组 则只扫描数组中设备
+//    [SVProgressHUD showWithStatus:@"搜索设备中"];
+//    [_centreManager scanForPeripheralsWithServices:nil options:nil];
+}
 
-#pragma mark - 导航栏左右按钮点击事件
-- (void)leftBtnItemClicked {
-    //扫描外设
-    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:@"查找设备"]) {
-        [SVProgressHUD showWithStatus:@"正在查找附近设备"];
-        [self.navigationItem.leftBarButtonItem setTitle:@"断开连接"];
-        //设置中心设备
-        //设置代理
-        _centreManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue()];
-        //利用中心设备扫描外部设备
-        
-        //如果指定数组 则只扫描数组中设备
-        [_centreManager scanForPeripheralsWithServices:nil options:nil];
-    }else {
-        [SVProgressHUD dismiss];
-        [_centreManager stopScan];
+#pragma mark - 停止搜索或者断开连接
+- (void)disconnectBleDevice {
+    if (_centreManager!=nil) {
+//        [_centreManager stopScan];
+
         if (_peripheral!=nil) {
-            NSLog(@"dis connect start");
             [_centreManager cancelPeripheralConnection:_peripheral];
+            _peripheral = nil;
         }
-        _peripheral = nil;
-        _peripherals = [NSMutableArray arrayWithCapacity:0];
-        [_tableview reloadData];
-        _pm25Label.text = nil;
-        [self.navigationItem.leftBarButtonItem setTitle:@"查找设备"];
-        [self.navigationItem.rightBarButtonItem setTitle:@"开始刷新"];
-        [_timer invalidate];
-        _timer = nil;
+        _centreManager.delegate = nil;
+        _centreManager = nil;
     }
 }
 
+
+#pragma mark - 导航栏左右按钮点击事件
+- (void)connectMyBleDevice {
+    //搜索设备
+    [self searchBleDevice];
+}
+
+
 - (void)dealloc {
-    _tableview = nil;
     _peripheral = nil;
     _centreManager = nil;
-    
+    _airview = nil;
     NSLog(@"%s",__func__);
 }
+
+- (CGRect)buttonFrame{
+    return _historyBtn.frame;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

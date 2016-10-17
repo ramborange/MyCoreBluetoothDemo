@@ -26,10 +26,12 @@
     // Do any additional setup after loading the view from its nib.
     self.preferredContentSize = CGSizeMake(self.view.bounds.size.width, 100);
 
-    UILabel *pmTitleLabel = [self getLabelWith:40 :@"pm2.5" :[UIColor whiteColor] :CGRectMake(0, 20, SCREEN_WIDTH/2, 60) :1];
+//    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *pmTitleLabel = [self getLabelWith:40 :@"pm2.5" :[UIColor darkGrayColor] :CGRectMake(0, 20, SCREEN_WIDTH/2, 60) :1];
     [self.view addSubview:pmTitleLabel];
     
-    _pm25Label = [self getLabelWith:40 :@"" :[UIColor whiteColor] :CGRectMake(SCREEN_WIDTH/2, 20, SCREEN_WIDTH/2, 60) :1];
+    _pm25Label = [self getLabelWith:40 :@"" :[UIColor darkGrayColor] :CGRectMake(SCREEN_WIDTH/2, 20, SCREEN_WIDTH/2, 60) :1];
     [self.view addSubview:_pm25Label];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -55,8 +57,8 @@
 //一个字符串中不同的字体样式
 - (NSMutableAttributedString *)getVariousString:(NSString *)textString unitLength:(NSInteger)length{
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:textString];
-    [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HDZK-GLXLZT-05" size:40] range:NSMakeRange(0,textString.length-length)];
-    [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HDZK-GLXLZT-05" size:20] range:NSMakeRange(textString.length-length,length)];
+    [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Gillsans-Light" size:40] range:NSMakeRange(0,textString.length-length)];
+    [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Gillsans-Light" size:20] range:NSMakeRange(textString.length-length,length)];
     return str;
 }
 
@@ -76,7 +78,7 @@
 
 - (UILabel *)getLabelWith:(NSInteger)fontSize :(NSString *)title :(UIColor*)titleColor :(CGRect)lableRect :(NSInteger)lines{
     UILabel *lable = [[UILabel alloc] initWithFrame:lableRect];
-    lable.font = [UIFont fontWithName:@"HDZK-GLXLZT-05" size:fontSize];
+    lable.font = [UIFont fontWithName:@"Gillsans-Light" size:fontSize];
     lable.text = title;
     lable.textColor = titleColor;
     lable.numberOfLines = lines;

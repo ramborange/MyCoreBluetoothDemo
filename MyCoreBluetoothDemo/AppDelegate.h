@@ -15,6 +15,5 @@
 
 @property (nonatomic, strong) ViewController *rootViewController;
 
--(void)receiveData:(NSMutableDictionary*)dataDic;
 @end
 

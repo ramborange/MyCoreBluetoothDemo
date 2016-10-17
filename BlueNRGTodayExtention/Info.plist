@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>BlueNRG</string>
+	<string>CarAir</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -29,9 +29,5 @@
 		<key>NSExtensionPrincipalClass</key>
 		<string>TodayViewController</string>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>郭灵霞灵芝体.ttf</string>
-	</array>
 </dict>
 </plist>

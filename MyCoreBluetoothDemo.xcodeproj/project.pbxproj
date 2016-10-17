@@ -7,9 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		046B49C51CF2F8EB00718F4B /* testImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B49C41CF2F8EB00718F4B /* testImg.png */; };
-		04B970AE1CF841100057A321 /* 郭灵霞灵芝体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B970AD1CF841100057A321 /* 郭灵霞灵芝体.ttf */; };
-		04B970AF1CF841100057A321 /* 郭灵霞灵芝体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04B970AD1CF841100057A321 /* 郭灵霞灵芝体.ttf */; };
+		04194F181D2A32FE000FA02C /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04194F171D2A32FE000FA02C /* DatePickerView.m */; };
+		0419DA831DACEB7900A0CD9C /* StrainerUseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0419DA821DACEB7900A0CD9C /* StrainerUseTimeView.m */; };
+		042A399C1DAF328500BE0DD0 /* setting_guide.png in Resources */ = {isa = PBXBuildFile; fileRef = 042A399B1DAF328500BE0DD0 /* setting_guide.png */; };
+		04315A9B1D239CBB0027CCB3 /* ProgressBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 04315A9A1D239CBB0027CCB3 /* ProgressBtn.m */; };
+		04315A9E1D23AB080027CCB3 /* XWCircleSpreadTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 04315A9D1D23AB080027CCB3 /* XWCircleSpreadTransition.m */; };
+		04344D401D1CE24500A7A3BB /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04344D3F1D1CE24500A7A3BB /* BallView.m */; };
+		04344D431D1D249100A7A3BB /* DataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04344D421D1D249100A7A3BB /* DataRequest.m */; };
+		043CBE911D2103FA00F504C5 /* BlueToothData.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CBE901D2103FA00F504C5 /* BlueToothData.m */; };
+		043CBE941D211D6700F504C5 /* BTDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CBE931D211D6700F504C5 /* BTDataModel.m */; };
+		043CBE961D211D8700F504C5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 043CBE951D211D8700F504C5 /* CoreData.framework */; };
+		043CBE981D211D9000F504C5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 043CBE971D211D9000F504C5 /* libsqlite3.tbd */; };
+		043CBE9B1D211DEE00F504C5 /* DataSaveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CBE9A1D211DEE00F504C5 /* DataSaveHelper.m */; };
+		043CBE9E1D2125BB00F504C5 /* BTDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 043CBE9C1D2125BB00F504C5 /* BTDataModel.xcdatamodeld */; };
+		043CBEA11D212CC900F504C5 /* HistoryDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CBEA01D212CC900F504C5 /* HistoryDataViewCell.m */; };
+		0458437B1D1A952E0024A7EE /* AirView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0458437A1D1A952E0024A7EE /* AirView.m */; };
+		0458EEAF1D23B8830040642C /* ShareOnce.m in Sources */ = {isa = PBXBuildFile; fileRef = 0458EEAE1D23B8830040642C /* ShareOnce.m */; };
+		045DA9C91D225ADC00679876 /* HistoryDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DA9C81D225ADC00679876 /* HistoryDataViewController.m */; };
+		045DA9CC1D2260B100679876 /* CAButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DA9CB1D2260B100679876 /* CAButton.m */; };
+		046FFEB51DADDCD700D50E07 /* use_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 046FFEB41DADDCD700D50E07 /* use_flag.png */; };
+		046FFEB71DADE68500D50E07 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046FFEB61DADE68500D50E07 /* Security.framework */; };
+		046FFEB91DADE68F00D50E07 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046FFEB81DADE68F00D50E07 /* QuartzCore.framework */; };
+		048D9F9B1DAC973100046E3A /* lw_state1.png in Resources */ = {isa = PBXBuildFile; fileRef = 048D9F9A1DAC973100046E3A /* lw_state1.png */; };
+		048D9F9D1DAC9BBB00046E3A /* lw_state2.png in Resources */ = {isa = PBXBuildFile; fileRef = 048D9F9C1DAC9BBB00046E3A /* lw_state2.png */; };
+		048D9F9F1DAC9BBF00046E3A /* lw_state3.png in Resources */ = {isa = PBXBuildFile; fileRef = 048D9F9E1DAC9BBF00046E3A /* lw_state3.png */; };
 		04CB21911CF8085A00B9700A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CB21901CF8085A00B9700A /* NotificationCenter.framework */; };
 		04CB21951CF8085A00B9700A /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CB21941CF8085A00B9700A /* TodayViewController.m */; };
 		04CB219C1CF8085A00B9700A /* BlueNRGTodayExtention.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04CB218F1CF8085900B9700A /* BlueNRGTodayExtention.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -28,7 +49,11 @@
 		04D4CA6C1CEF155E00068E65 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04D4CA631CEF155E00068E65 /* SVProgressHUD.bundle */; };
 		04D4CA6D1CEF155E00068E65 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D4CA651CEF155E00068E65 /* SVProgressHUD.m */; };
 		04D4CA6E1CEF155E00068E65 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D4CA671CEF155E00068E65 /* SVRadialGradientLayer.m */; };
-		04E239B31CFD3AEE00EB0CA2 /* MyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E239B21CFD3AEE00EB0CA2 /* MyTool.m */; };
+		04E962A41D2CE08400B1FDDE /* btn_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E962A31D2CE08400B1FDDE /* btn_bg.png */; };
+		04F1D9301DACBB4F00D1757F /* launch_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F1D92F1DACBB4F00D1757F /* launch_logo.png */; };
+		04F1D9391DACDF5500D1757F /* lw_state0.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F1D9381DACDF5500D1757F /* lw_state0.png */; };
+		04F1D93C1DACE13E00D1757F /* StrainerInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F1D93B1DACE13E00D1757F /* StrainerInfoController.m */; };
+		04F6F0821D4AF61700EDF185 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F6F0811D4AF61700EDF185 /* CoreLocation.framework */; };
 		EA24511B1CAE236A1C6F15AE /* libPods-MyCoreBluetoothDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB682996460207CC082F1D2 /* libPods-MyCoreBluetoothDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -71,8 +96,44 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		046B49C41CF2F8EB00718F4B /* testImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImg.png; sourceTree = "<group>"; };
-		04B970AD1CF841100057A321 /* 郭灵霞灵芝体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "郭灵霞灵芝体.ttf"; sourceTree = "<group>"; };
+		04194F161D2A32FE000FA02C /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
+		04194F171D2A32FE000FA02C /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
+		0419DA811DACEB7900A0CD9C /* StrainerUseTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrainerUseTimeView.h; sourceTree = "<group>"; };
+		0419DA821DACEB7900A0CD9C /* StrainerUseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrainerUseTimeView.m; sourceTree = "<group>"; };
+		042A399B1DAF328500BE0DD0 /* setting_guide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_guide.png; sourceTree = "<group>"; };
+		04315A991D239CBB0027CCB3 /* ProgressBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBtn.h; sourceTree = "<group>"; };
+		04315A9A1D239CBB0027CCB3 /* ProgressBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBtn.m; sourceTree = "<group>"; };
+		04315A9C1D23AB080027CCB3 /* XWCircleSpreadTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCircleSpreadTransition.h; sourceTree = "<group>"; };
+		04315A9D1D23AB080027CCB3 /* XWCircleSpreadTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCircleSpreadTransition.m; sourceTree = "<group>"; };
+		04344D3E1D1CE24500A7A3BB /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallView.h; sourceTree = "<group>"; };
+		04344D3F1D1CE24500A7A3BB /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallView.m; sourceTree = "<group>"; };
+		04344D411D1D249100A7A3BB /* DataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRequest.h; sourceTree = "<group>"; };
+		04344D421D1D249100A7A3BB /* DataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRequest.m; sourceTree = "<group>"; };
+		043CBE8F1D2103FA00F504C5 /* BlueToothData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueToothData.h; sourceTree = "<group>"; };
+		043CBE901D2103FA00F504C5 /* BlueToothData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueToothData.m; sourceTree = "<group>"; };
+		043CBE921D211D6700F504C5 /* BTDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDataModel.h; sourceTree = "<group>"; };
+		043CBE931D211D6700F504C5 /* BTDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTDataModel.m; sourceTree = "<group>"; };
+		043CBE951D211D8700F504C5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		043CBE971D211D9000F504C5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		043CBE991D211DEE00F504C5 /* DataSaveHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSaveHelper.h; sourceTree = "<group>"; };
+		043CBE9A1D211DEE00F504C5 /* DataSaveHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSaveHelper.m; sourceTree = "<group>"; };
+		043CBE9D1D2125BB00F504C5 /* BTDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BTDataModel.xcdatamodel; sourceTree = "<group>"; };
+		043CBE9F1D212CC900F504C5 /* HistoryDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDataViewCell.h; sourceTree = "<group>"; };
+		043CBEA01D212CC900F504C5 /* HistoryDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataViewCell.m; sourceTree = "<group>"; };
+		045843791D1A952E0024A7EE /* AirView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirView.h; sourceTree = "<group>"; };
+		0458437A1D1A952E0024A7EE /* AirView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirView.m; sourceTree = "<group>"; };
+		0458EEAD1D23B8830040642C /* ShareOnce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareOnce.h; sourceTree = "<group>"; };
+		0458EEAE1D23B8830040642C /* ShareOnce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOnce.m; sourceTree = "<group>"; };
+		045DA9C71D225ADC00679876 /* HistoryDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDataViewController.h; sourceTree = "<group>"; };
+		045DA9C81D225ADC00679876 /* HistoryDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDataViewController.m; sourceTree = "<group>"; };
+		045DA9CA1D2260B100679876 /* CAButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAButton.h; sourceTree = "<group>"; };
+		045DA9CB1D2260B100679876 /* CAButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAButton.m; sourceTree = "<group>"; };
+		046FFEB41DADDCD700D50E07 /* use_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = use_flag.png; sourceTree = "<group>"; };
+		046FFEB61DADE68500D50E07 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		046FFEB81DADE68F00D50E07 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		048D9F9A1DAC973100046E3A /* lw_state1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lw_state1.png; sourceTree = "<group>"; };
+		048D9F9C1DAC9BBB00046E3A /* lw_state2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lw_state2.png; sourceTree = "<group>"; };
+		048D9F9E1DAC9BBF00046E3A /* lw_state3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lw_state3.png; sourceTree = "<group>"; };
 		04CB218F1CF8085900B9700A /* BlueNRGTodayExtention.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlueNRGTodayExtention.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CB21901CF8085A00B9700A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		04CB21931CF8085A00B9700A /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
@@ -107,8 +168,12 @@
 		04D4CA651CEF155E00068E65 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		04D4CA661CEF155E00068E65 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		04D4CA671CEF155E00068E65 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
-		04E239B11CFD3AEE00EB0CA2 /* MyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTool.h; sourceTree = "<group>"; };
-		04E239B21CFD3AEE00EB0CA2 /* MyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTool.m; sourceTree = "<group>"; };
+		04E962A31D2CE08400B1FDDE /* btn_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bg.png; sourceTree = "<group>"; };
+		04F1D92F1DACBB4F00D1757F /* launch_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_logo.png; sourceTree = "<group>"; };
+		04F1D9381DACDF5500D1757F /* lw_state0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lw_state0.png; sourceTree = "<group>"; };
+		04F1D93A1DACE13E00D1757F /* StrainerInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrainerInfoController.h; sourceTree = "<group>"; };
+		04F1D93B1DACE13E00D1757F /* StrainerInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrainerInfoController.m; sourceTree = "<group>"; };
+		04F6F0811D4AF61700EDF185 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		24E2FDAB5D5C736F10B6E893 /* Pods-MyCoreBluetoothDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCoreBluetoothDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCoreBluetoothDemo/Pods-MyCoreBluetoothDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8CB682996460207CC082F1D2 /* libPods-MyCoreBluetoothDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyCoreBluetoothDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB6D08500DD23E8B974DA183 /* Pods-MyCoreBluetoothDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCoreBluetoothDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyCoreBluetoothDemo/Pods-MyCoreBluetoothDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +192,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046FFEB91DADE68F00D50E07 /* QuartzCore.framework in Frameworks */,
+				046FFEB71DADE68500D50E07 /* Security.framework in Frameworks */,
+				04F6F0821D4AF61700EDF185 /* CoreLocation.framework in Frameworks */,
+				043CBE981D211D9000F504C5 /* libsqlite3.tbd in Frameworks */,
+				043CBE961D211D8700F504C5 /* CoreData.framework in Frameworks */,
 				04D4CA5A1CEF06E400068E65 /* CoreBluetooth.framework in Frameworks */,
 				EA24511B1CAE236A1C6F15AE /* libPods-MyCoreBluetoothDemo.a in Frameworks */,
 			);
@@ -163,7 +233,6 @@
 		04D4CA1A1CEF06BA00068E65 = {
 			isa = PBXGroup;
 			children = (
-				04B970AD1CF841100057A321 /* 郭灵霞灵芝体.ttf */,
 				04D4CA591CEF06E400068E65 /* CoreBluetooth.framework */,
 				04D4CA251CEF06BA00068E65 /* MyCoreBluetoothDemo */,
 				04D4CA3F1CEF06BA00068E65 /* MyCoreBluetoothDemoTests */,
@@ -189,13 +258,14 @@
 		04D4CA251CEF06BA00068E65 /* MyCoreBluetoothDemo */ = {
 			isa = PBXGroup;
 			children = (
+				04F6F0801D4AED9400EDF185 /* resources */,
+				04F6F07F1D4AED8800EDF185 /* utility */,
+				04F6F07E1D4AED7900EDF185 /* customViews */,
+				04F6F07D1D4AED6B00EDF185 /* models */,
+				04F6F07C1D4AED5A00EDF185 /* viewControllers */,
 				04CB21A11CF808FB00B9700A /* MyCoreBluetoothDemo.entitlements */,
 				04D4CA291CEF06BA00068E65 /* AppDelegate.h */,
 				04D4CA2A1CEF06BA00068E65 /* AppDelegate.m */,
-				04D4CA2C1CEF06BA00068E65 /* ViewController.h */,
-				04D4CA2D1CEF06BA00068E65 /* ViewController.m */,
-				04E239B11CFD3AEE00EB0CA2 /* MyTool.h */,
-				04E239B21CFD3AEE00EB0CA2 /* MyTool.m */,
 				04D4CA321CEF06BA00068E65 /* Assets.xcassets */,
 				04D4CA341CEF06BA00068E65 /* LaunchScreen.storyboard */,
 				04D4CA371CEF06BA00068E65 /* Info.plist */,
@@ -207,7 +277,6 @@
 		04D4CA261CEF06BA00068E65 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				046B49C41CF2F8EB00718F4B /* testImg.png */,
 				04D4CA5B1CEF155E00068E65 /* SVProgressHUD */,
 				04D4CA271CEF06BA00068E65 /* main.m */,
 			);
@@ -258,6 +327,82 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		04F6F07C1D4AED5A00EDF185 /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04D4CA2C1CEF06BA00068E65 /* ViewController.h */,
+				04D4CA2D1CEF06BA00068E65 /* ViewController.m */,
+				045DA9C71D225ADC00679876 /* HistoryDataViewController.h */,
+				045DA9C81D225ADC00679876 /* HistoryDataViewController.m */,
+				04F1D93A1DACE13E00D1757F /* StrainerInfoController.h */,
+				04F1D93B1DACE13E00D1757F /* StrainerInfoController.m */,
+			);
+			name = viewControllers;
+			sourceTree = "<group>";
+		};
+		04F6F07D1D4AED6B00EDF185 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				043CBE8F1D2103FA00F504C5 /* BlueToothData.h */,
+				043CBE901D2103FA00F504C5 /* BlueToothData.m */,
+				043CBE921D211D6700F504C5 /* BTDataModel.h */,
+				043CBE931D211D6700F504C5 /* BTDataModel.m */,
+				043CBE991D211DEE00F504C5 /* DataSaveHelper.h */,
+				043CBE9A1D211DEE00F504C5 /* DataSaveHelper.m */,
+				043CBE9C1D2125BB00F504C5 /* BTDataModel.xcdatamodeld */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		04F6F07E1D4AED7900EDF185 /* customViews */ = {
+			isa = PBXGroup;
+			children = (
+				043CBE9F1D212CC900F504C5 /* HistoryDataViewCell.h */,
+				043CBEA01D212CC900F504C5 /* HistoryDataViewCell.m */,
+				04194F161D2A32FE000FA02C /* DatePickerView.h */,
+				04194F171D2A32FE000FA02C /* DatePickerView.m */,
+				04315A991D239CBB0027CCB3 /* ProgressBtn.h */,
+				04315A9A1D239CBB0027CCB3 /* ProgressBtn.m */,
+				045DA9CA1D2260B100679876 /* CAButton.h */,
+				045DA9CB1D2260B100679876 /* CAButton.m */,
+				045843791D1A952E0024A7EE /* AirView.h */,
+				0458437A1D1A952E0024A7EE /* AirView.m */,
+				04344D3E1D1CE24500A7A3BB /* BallView.h */,
+				04344D3F1D1CE24500A7A3BB /* BallView.m */,
+				0419DA811DACEB7900A0CD9C /* StrainerUseTimeView.h */,
+				0419DA821DACEB7900A0CD9C /* StrainerUseTimeView.m */,
+			);
+			name = customViews;
+			sourceTree = "<group>";
+		};
+		04F6F07F1D4AED8800EDF185 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				04315A9C1D23AB080027CCB3 /* XWCircleSpreadTransition.h */,
+				04315A9D1D23AB080027CCB3 /* XWCircleSpreadTransition.m */,
+				04344D411D1D249100A7A3BB /* DataRequest.h */,
+				04344D421D1D249100A7A3BB /* DataRequest.m */,
+				0458EEAD1D23B8830040642C /* ShareOnce.h */,
+				0458EEAE1D23B8830040642C /* ShareOnce.m */,
+			);
+			name = utility;
+			sourceTree = "<group>";
+		};
+		04F6F0801D4AED9400EDF185 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				042A399B1DAF328500BE0DD0 /* setting_guide.png */,
+				046FFEB41DADDCD700D50E07 /* use_flag.png */,
+				04E962A31D2CE08400B1FDDE /* btn_bg.png */,
+				04F1D9381DACDF5500D1757F /* lw_state0.png */,
+				048D9F9A1DAC973100046E3A /* lw_state1.png */,
+				048D9F9C1DAC9BBB00046E3A /* lw_state2.png */,
+				048D9F9E1DAC9BBF00046E3A /* lw_state3.png */,
+				04F1D92F1DACBB4F00D1757F /* launch_logo.png */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		09E4A1CB45693412643FBCDB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +415,11 @@
 		F09B548014F0D663EECA01A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				046FFEB81DADE68F00D50E07 /* QuartzCore.framework */,
+				046FFEB61DADE68500D50E07 /* Security.framework */,
+				04F6F0811D4AF61700EDF185 /* CoreLocation.framework */,
+				043CBE971D211D9000F504C5 /* libsqlite3.tbd */,
+				043CBE951D211D8700F504C5 /* CoreData.framework */,
 				8CB682996460207CC082F1D2 /* libPods-MyCoreBluetoothDemo.a */,
 				04CB21901CF8085A00B9700A /* NotificationCenter.framework */,
 			);
@@ -366,6 +516,7 @@
 					04CB218E1CF8085900B9700A = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = RQJ35TZY2P;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -375,6 +526,7 @@
 					04D4CA221CEF06BA00068E65 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = RQJ35TZY2P;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -386,10 +538,12 @@
 					};
 					04D4CA3B1CEF06BA00068E65 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = RQJ35TZY2P;
 						TestTargetID = 04D4CA221CEF06BA00068E65;
 					};
 					04D4CA461CEF06BA00068E65 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = RQJ35TZY2P;
 						TestTargetID = 04D4CA221CEF06BA00068E65;
 					};
 				};
@@ -420,7 +574,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04B970AF1CF841100057A321 /* 郭灵霞灵芝体.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,12 +581,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F1D9301DACBB4F00D1757F /* launch_logo.png in Resources */,
 				04D4CA6C1CEF155E00068E65 /* SVProgressHUD.bundle in Resources */,
 				04D4CA681CEF155E00068E65 /* LICENSE.txt in Resources */,
+				046FFEB51DADDCD700D50E07 /* use_flag.png in Resources */,
+				04F1D9391DACDF5500D1757F /* lw_state0.png in Resources */,
+				048D9F9F1DAC9BBF00046E3A /* lw_state3.png in Resources */,
+				048D9F9D1DAC9BBB00046E3A /* lw_state2.png in Resources */,
+				042A399C1DAF328500BE0DD0 /* setting_guide.png in Resources */,
 				04D4CA361CEF06BA00068E65 /* LaunchScreen.storyboard in Resources */,
 				04D4CA331CEF06BA00068E65 /* Assets.xcassets in Resources */,
-				046B49C51CF2F8EB00718F4B /* testImg.png in Resources */,
-				04B970AE1CF841100057A321 /* 郭灵霞灵芝体.ttf in Resources */,
+				048D9F9B1DAC973100046E3A /* lw_state1.png in Resources */,
+				04E962A41D2CE08400B1FDDE /* btn_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,15 +673,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043CBE941D211D6700F504C5 /* BTDataModel.m in Sources */,
 				04D4CA6A1CEF155E00068E65 /* SVIndefiniteAnimatedView.m in Sources */,
+				043CBE9E1D2125BB00F504C5 /* BTDataModel.xcdatamodeld in Sources */,
+				045DA9CC1D2260B100679876 /* CAButton.m in Sources */,
+				04F1D93C1DACE13E00D1757F /* StrainerInfoController.m in Sources */,
+				04344D401D1CE24500A7A3BB /* BallView.m in Sources */,
 				04D4CA2E1CEF06BA00068E65 /* ViewController.m in Sources */,
+				0419DA831DACEB7900A0CD9C /* StrainerUseTimeView.m in Sources */,
 				04D4CA2B1CEF06BA00068E65 /* AppDelegate.m in Sources */,
+				045DA9C91D225ADC00679876 /* HistoryDataViewController.m in Sources */,
 				04D4CA6E1CEF155E00068E65 /* SVRadialGradientLayer.m in Sources */,
+				04315A9B1D239CBB0027CCB3 /* ProgressBtn.m in Sources */,
+				043CBEA11D212CC900F504C5 /* HistoryDataViewCell.m in Sources */,
 				04D4CA6D1CEF155E00068E65 /* SVProgressHUD.m in Sources */,
+				043CBE911D2103FA00F504C5 /* BlueToothData.m in Sources */,
+				043CBE9B1D211DEE00F504C5 /* DataSaveHelper.m in Sources */,
 				04D4CA691CEF155E00068E65 /* README.md in Sources */,
 				04D4CA281CEF06BA00068E65 /* main.m in Sources */,
+				04315A9E1D23AB080027CCB3 /* XWCircleSpreadTransition.m in Sources */,
+				0458437B1D1A952E0024A7EE /* AirView.m in Sources */,
+				04194F181D2A32FE000FA02C /* DatePickerView.m in Sources */,
 				04D4CA6B1CEF155E00068E65 /* SVProgressAnimatedView.m in Sources */,
-				04E239B31CFD3AEE00EB0CA2 /* MyTool.m in Sources */,
+				0458EEAF1D23B8830040642C /* ShareOnce.m in Sources */,
+				04344D431D1D249100A7A3BB /* DataRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,13 +752,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BlueNRGTodayExtention/BlueNRGTodayExtention.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
+				DEVELOPMENT_TEAM = RQJ35TZY2P;
 				INFOPLIST_FILE = BlueNRGTodayExtention/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanwang.MyCoreBluetoothDemo.BlueNRGTodayExtention;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d8771cf1-331a-4b7d-a456-b95ebd564e65";
+				PROVISIONING_PROFILE_SPECIFIER = CarAirTodayExtension_cer;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -592,13 +771,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BlueNRGTodayExtention/BlueNRGTodayExtention.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
+				DEVELOPMENT_TEAM = RQJ35TZY2P;
 				INFOPLIST_FILE = BlueNRGTodayExtention/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanwang.MyCoreBluetoothDemo.BlueNRGTodayExtention;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d8771cf1-331a-4b7d-a456-b95ebd564e65";
+				PROVISIONING_PROFILE_SPECIFIER = CarAirTodayExtension_cer;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -620,9 +804,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RQJ35TZY2P;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -642,6 +828,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "2054775b-7e33-495c-ac89-d54941f316e9";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -664,9 +851,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RQJ35TZY2P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -679,6 +868,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "2054775b-7e33-495c-ac89-d54941f316e9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -691,12 +881,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = MyCoreBluetoothDemo/MyCoreBluetoothDemo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = RQJ35TZY2P;
 				INFOPLIST_FILE = MyCoreBluetoothDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanwang.MyCoreBluetoothDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2054775b-7e33-495c-ac89-d54941f316e9";
+				PROVISIONING_PROFILE_SPECIFIER = CarAirAdHoc_Cer;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -708,12 +902,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = MyCoreBluetoothDemo/MyCoreBluetoothDemo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hanwang Technology Co., Ltd. (RQJ35TZY2P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = RQJ35TZY2P;
 				INFOPLIST_FILE = MyCoreBluetoothDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hanwang.MyCoreBluetoothDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2054775b-7e33-495c-ac89-d54941f316e9";
+				PROVISIONING_PROFILE_SPECIFIER = CarAirAdHoc_Cer;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -813,6 +1011,19 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		043CBE9C1D2125BB00F504C5 /* BTDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				043CBE9D1D2125BB00F504C5 /* BTDataModel.xcdatamodel */,
+			);
+			currentVersion = 043CBE9D1D2125BB00F504C5 /* BTDataModel.xcdatamodel */;
+			path = BTDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04D4CA1B1CEF06BA00068E65 /* Project object */;
 }

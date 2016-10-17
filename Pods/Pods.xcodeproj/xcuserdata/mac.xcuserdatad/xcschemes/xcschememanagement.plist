@@ -8,25 +8,31 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
+		</dict>
+		<key>SAMKeychain.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>UITableView+FDTemplateLayoutCell.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>866D6A19EC3248DA2F6289B7F10E8001</key>
+		<key>09D37D1F12A9D218EFD64B959EFAA4B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>98F6203B16E403A2163FB54E4519A5B0</key>
+		<key>0BDD3142F35EF5954CE19982DB08DD12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEC1AE7D50D5FE213417B2EE4E17CDDE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

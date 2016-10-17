@@ -21,9 +21,15 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     self.rootViewController = [[ViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
-    self.window.rootViewController = nav;
-        
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = self.rootViewController;
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    
+    sleep(1);
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -45,6 +51,20 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    if (self.rootViewController.peripheral==nil) {
+        [self.rootViewController connectMyBleDevice];
+    }else {
+        if (self.rootViewController.peripheral.state==CBPeripheralStateDisconnected) {
+            [self.rootViewController.centreManager connectPeripheral:self.rootViewController.peripheral options:nil];
+        }
+        if ([[UIDevice currentDevice] systemVersion].floatValue>=9.0) {
+            if (self.rootViewController.peripheral.state==CBPeripheralStateDisconnecting) {
+                [self.rootViewController.centreManager connectPeripheral:self.rootViewController.peripheral options:nil];
+            }
+        }
+    }
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

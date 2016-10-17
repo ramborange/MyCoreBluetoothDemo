@@ -1,12 +1,15 @@
 PODS:
+  - SAMKeychain (1.5.2)
   - UITableView+FDTemplateLayoutCell (1.4)
 
 DEPENDENCIES:
+  - SAMKeychain
   - UITableView+FDTemplateLayoutCell
 
 SPEC CHECKSUMS:
+  SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
-PODFILE CHECKSUM: 3ae0c900a556f859e784a757cdc061fa02e24a9a
+PODFILE CHECKSUM: 542d862bceb8b7bbcdc5c58fbc4951cf38f05a9e
 
 COCOAPODS: 1.0.0
